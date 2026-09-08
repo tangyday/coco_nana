@@ -130,8 +130,21 @@
     .sticker-card h3 { margin:28px 0 5px; font-family:"Noto Sans KR",sans-serif; font-size:clamp(1rem,1.3vw,1.3rem); line-height:1.2; letter-spacing:-.055em; white-space:nowrap; }
     .sticker-card p { margin:0; color:#6d675f; font-family:"Noto Sans KR",sans-serif; font-size:.8rem; }
     .line-label { position:absolute; top:5px; right:4px; display:inline-flex; align-items:center; min-height:34px; padding:0 13px; border-radius:999px; color:#fff; background:#06c755; font-size:.67rem; font-weight:800; letter-spacing:.1em; }
-    .kakao-label { gap:7px; color:#221f1f; background:#fee500; }
-    .kakao-bubble { display:inline-grid; place-items:center; width:22px; height:22px; border-radius:50%; color:#fee500; background:#221f1f; font-size:.53rem; font-weight:900; letter-spacing:0; }
+    .kakao-label { color:#221f1f; background:#fee500; }
+    .sticker-carousel { position:relative; overflow:hidden; }
+    .sticker-carousel-track { display:flex; transition:transform .35s ease; will-change:transform; }
+    .sticker-slide { flex:0 0 100%; min-width:0; }
+    .sticker-slide .sticker-shot { border:0; }
+    .sticker-slide-meta { padding:14px 2px 2px; }
+    .sticker-slide-meta h4 { margin:0 0 4px; font-family:"Noto Sans KR",sans-serif; font-size:1rem; letter-spacing:-.04em; }
+    .sticker-slide-meta p { margin:0; color:#6d675f; font-family:"Noto Sans KR",sans-serif; font-size:.76rem; }
+    .sticker-carousel-nav { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:12px; }
+    .sticker-carousel-arrows { display:flex; gap:7px; }
+    .sticker-carousel-btn { width:38px; height:38px; border:1px solid rgba(17,17,17,.24); background:#fff; cursor:pointer; font-size:1.15rem; line-height:1; }
+    .sticker-carousel-btn:hover { background:#111; color:#fff; }
+    .sticker-carousel-dots { display:flex; gap:7px; align-items:center; }
+    .sticker-carousel-dot { width:7px; height:7px; padding:0; border:0; border-radius:50%; background:#b7b0a7; cursor:pointer; }
+    .sticker-carousel-dot[aria-current="true"] { width:20px; border-radius:999px; background:#111; }
     .sticker-shot { height:520px; overflow:auto; border:1px solid rgba(17,17,17,.14); background:#fff; scrollbar-color:#111 #eee; scrollbar-width:thin; }
     .sticker-shot img { width:100%; height:auto; }
     .scroll-note { display:flex; justify-content:space-between; gap:10px; padding:10px 2px 0; color:#777168; font-size:.62rem; font-weight:700; letter-spacing:.08em; }
@@ -245,11 +258,19 @@
       <div class="emoticon-layout">
       <div class="emoticon-head"><p class="eyebrow">LINE sticker collection</p><h2 id="emoticon-title">Emoti<br>con</h2><p>코코와 나나의 표정과 일상을 담은<br class="mobile-break"><span class="pc-break"></span> LINE 스티커 컬렉션이에요.<br class="mobile-break"><span class="pc-break"></span> 카드 안을 스크롤하면 각 세트의 전체 구성을 볼 수 있어요.</p></div>
       <div class="sticker-grid">
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">STICKER SET 01</span><h3>코코의 행복한 일상</h3><p>동그랗고 귀여운 랙돌 코코의 사랑스러운 일상</p></div><span class="line-label">LINE</span></div><div class="sticker-shot" tabindex="0" aria-label="코코의 행복한 일상 LINE 스티커 전체 이미지, 세로로 스크롤 가능"><img src="images/line-coco.jpg" alt="코코의 행복한 일상 LINE 스티커 세트" loading="lazy"></div><div class="scroll-note"><span>LINE STICKERS</span><span>SCROLL TO EXPLORE ↓</span></div></article>
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">STICKER SET 02</span><h3>코코랑 나나의 행복한 일상</h3><p>랙돌 코코와 코숏 나나의 포근한 하루</p></div><span class="line-label">LINE</span></div><div class="sticker-shot" tabindex="0" aria-label="코코랑 나나의 행복한 일상 LINE 스티커 전체 이미지, 세로로 스크롤 가능"><img src="images/line-coco-nana.jpg" alt="코코랑 나나의 행복한 일상 LINE 스티커 세트" loading="lazy"></div><div class="scroll-note"><span>LINE STICKERS</span><span>SCROLL TO EXPLORE ↓</span></div></article>
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">STICKER SET 03</span><h3>사랑스러운 코코나나</h3><p>복실냥이 코코와 다정한 나나의 사랑스러운 모습</p></div><span class="line-label">LINE</span></div><div class="sticker-shot" tabindex="0" aria-label="사랑스러운 코코나나 LINE 스티커 전체 이미지, 세로로 스크롤 가능"><img src="images/line-coco-nana-02.jpg" alt="사랑스러운 코코나나 LINE 스티커 세트" loading="lazy"></div><div class="scroll-note"><span>LINE STICKERS</span><span>SCROLL TO EXPLORE ↓</span></div></article>
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">STICKER SET 04</span><h3>귀여운 고양이 코코와 나나</h3><p>귀엽고 사랑스러운 고양이 코코와 나나의 모습을 담은 스티커</p></div><span class="line-label">LINE</span></div><div class="sticker-shot" tabindex="0" aria-label="귀여운 고양이 코코와 나나 LINE 스티커 전체 이미지, 세로로 스크롤 가능"><img src="images/line-coco-nana-03.jpg" alt="귀여운 고양이 코코와 나나 LINE 스티커 세트" loading="lazy"></div><div class="scroll-note"><span>LINE STICKERS</span><span>SCROLL TO EXPLORE ↓</span></div></article>
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">KAKAO THEME 01</span><h3>사랑스러운 코코나나 카톡테마</h3><p>코코와 나나의 사랑스러운 모습을 담은 카카오톡 테마</p></div><span class="line-label kakao-label"><span class="kakao-bubble" aria-hidden="true">T</span>KAKAO</span></div><div class="sticker-shot" tabindex="0" aria-label="사랑스러운 코코나나 카카오톡 테마 미리보기 이미지, 세로로 스크롤 가능"><img src="images/kakao-theme-coco-nana-01.jpg" alt="사랑스러운 코코나나 카카오톡 테마 미리보기" loading="lazy"></div><div class="scroll-note"><span>KAKAO TALK THEME</span><span>SCROLL TO EXPLORE ↓</span></div></article>
+        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">LINE STICKER COLLECTION</span><h3>코코 &amp; 나나 LINE 스티커</h3><p>4개의 스티커 세트를 한 곳에서 넘겨보세요.</p></div><span class="line-label">LINE</span></div>
+          <div class="sticker-carousel" id="line-sticker-carousel" aria-label="코코와 나나 LINE 스티커 슬라이드">
+            <div class="sticker-carousel-track">
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco.jpg" alt="코코의 행복한 일상 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코의 행복한 일상</h4><p>동그랗고 귀여운 랙돌 코코의 사랑스러운 일상</p></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana.jpg" alt="코코랑 나나의 행복한 일상 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코랑 나나의 행복한 일상</h4><p>랙돌 코코와 코숏 나나의 포근한 하루</p></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana-02.jpg" alt="사랑스러운 코코나나 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>사랑스러운 코코나나</h4><p>복실냥이 코코와 다정한 나나의 사랑스러운 모습</p></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana-03.jpg" alt="귀여운 고양이 코코와 나나 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>귀여운 고양이 코코와 나나</h4><p>귀엽고 사랑스러운 코코와 나나의 모습을 담은 스티커</p></div></div>
+            </div>
+          </div>
+          <div class="sticker-carousel-nav"><div class="sticker-carousel-dots" aria-label="슬라이드 선택"><button class="sticker-carousel-dot" type="button" aria-label="1번 스티커" aria-current="true"></button><button class="sticker-carousel-dot" type="button" aria-label="2번 스티커"></button><button class="sticker-carousel-dot" type="button" aria-label="3번 스티커"></button><button class="sticker-carousel-dot" type="button" aria-label="4번 스티커"></button></div><div class="sticker-carousel-arrows"><button class="sticker-carousel-btn sticker-carousel-prev" type="button" aria-label="이전 스티커">‹</button><button class="sticker-carousel-btn sticker-carousel-next" type="button" aria-label="다음 스티커">›</button></div></div>
+          <div class="scroll-note"><span>LINE STICKERS · 01 / 04</span><span>SLIDE TO EXPLORE ↔</span></div></article>
+
+        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">KAKAO THEME 01</span><h3>사랑스러운 코코나나 카톡테마</h3><p>코코와 나나의 사랑스러운 모습을 담은 카카오톡 테마</p></div><span class="line-label kakao-label">KAKAO</span></div><div class="sticker-shot" tabindex="0" aria-label="사랑스러운 코코나나 카카오톡 테마 미리보기 이미지, 세로로 스크롤 가능"><img src="images/kakao-theme-coco-nana-01.jpg" alt="사랑스러운 코코나나 카카오톡 테마 미리보기" loading="lazy"></div><div class="scroll-note"><span>KAKAO TALK THEME</span><span>SCROLL TO EXPLORE ↓</span></div></article>
       </div></div>
     </div></section>
 
@@ -332,6 +353,30 @@
     });
     document.querySelector('.lightbox-close').addEventListener('click',()=>lightbox.close());lightbox.addEventListener('click',event=>{if(event.target===lightbox)lightbox.close();});lightbox.addEventListener('close',()=>{lightboxMedia.innerHTML='';lightboxIndex=-1;});
     let lastPageSize=getPageSize();addEventListener('resize',()=>{const next=getPageSize();if(next!==lastPageSize){lastPageSize=next;archivePage=1;renderArchive();}});renderArchive();
+    const lineCarousel=document.getElementById("line-sticker-carousel");
+    if(lineCarousel){
+      const track=lineCarousel.querySelector(".sticker-carousel-track");
+      const slides=[...lineCarousel.querySelectorAll(".sticker-slide")];
+      const card=lineCarousel.closest(".sticker-card");
+      const dots=[...card.querySelectorAll(".sticker-carousel-dot")];
+      const prev=card.querySelector(".sticker-carousel-prev");
+      const next=card.querySelector(".sticker-carousel-next");
+      const note=card.querySelector(".scroll-note span:first-child");
+      let index=0;
+      const show=(i)=>{
+        index=(i+slides.length)%slides.length;
+        track.style.transform=`translateX(-${index*100}%)`;
+        dots.forEach((dot,n)=>dot.setAttribute("aria-current",n===index?"true":"false"));
+        if(note) note.textContent=`LINE STICKERS · ${String(index+1).padStart(2,"0")} / ${String(slides.length).padStart(2,"0")}`;
+      };
+      prev.addEventListener("click",()=>show(index-1));
+      next.addEventListener("click",()=>show(index+1));
+      dots.forEach((dot,n)=>dot.addEventListener("click",()=>show(n)));
+      let touchStartX=0;
+      lineCarousel.addEventListener("touchstart",e=>{touchStartX=e.changedTouches[0].clientX},{passive:true});
+      lineCarousel.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-touchStartX;if(Math.abs(dx)>45) show(index+(dx<0?1:-1));},{passive:true});
+    }
+
   </script>
 </body>
 </html>
