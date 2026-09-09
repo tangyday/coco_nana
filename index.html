@@ -237,7 +237,10 @@
       }
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-track{animation:none}*,*::before,*::after{transition-duration:.01ms!important}}
-  </style>
+      .sticker-grid-single { grid-template-columns:1fr; }
+    .sticker-grid-single .sticker-card { width:100%; }
+    .theme-kind { display:inline-block; margin-top:9px; font-size:.62rem; font-weight:800; letter-spacing:.08em; color:#777168; }
+</style>
 </head>
 <body>
   <header><div class="wrap nav"><a class="logo" href="#top">COCO <i>&amp;</i> NANA</a><nav aria-label="주요 메뉴"><a href="#archive">ARCHIVE</a><a href="#emoticon">EMOTICON</a><a href="#about">ABOUT</a></nav><span class="edition">EST. 2026 · VOL.01</span></div></header>
@@ -268,20 +271,28 @@
     <section class="emoticons" id="emoticon" aria-labelledby="emoticon-title"><div class="wrap">
       <div class="emoticon-layout">
       <div class="emoticon-head"><p class="eyebrow">LINE sticker collection</p><h2 id="emoticon-title">Emoti<br>con</h2><p>코코와 나나의 표정과 일상을 담은<br class="mobile-break"><span class="pc-break"></span> LINE 스티커 컬렉션이에요.<br class="mobile-break"><span class="pc-break"></span> 카드 안을 스크롤하면 각 세트의 전체 구성을 볼 수 있어요.</p></div>
-      <div class="sticker-grid">
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">LINE STICKER COLLECTION</span><h3>코코 &amp; 나나 LINE 스티커</h3><p>4개의 스티커 세트를 한 곳에서 넘겨보세요.</p></div><span class="line-label">LINE</span></div>
-          <div class="sticker-carousel" id="line-sticker-carousel" aria-label="코코와 나나 LINE 스티커 슬라이드">
+      <div class="sticker-grid sticker-grid-single">
+        <article class="sticker-card">
+          <div class="sticker-card-head">
+            <div><span class="eyebrow">COCO &amp; NANA COLLECTION</span><h3>LINE 스티커 · LINE 테마 · 카카오 테마</h3><p>LINE 스티커 4장 다음에 LINE 테마 4장, 이어서 카카오 테마를 넘겨보세요.</p></div>
+            <span class="line-label">LINE + KAKAO</span>
+          </div>
+          <div class="sticker-carousel" id="line-sticker-carousel" aria-label="코코와 나나 스티커 및 테마 슬라이드">
             <div class="sticker-carousel-track">
-              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco.jpg" alt="코코의 행복한 일상 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코의 행복한 일상</h4><p>동그랗고 귀여운 랙돌 코코의 사랑스러운 일상</p></div></div>
-              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana.jpg" alt="코코랑 나나의 행복한 일상 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코랑 나나의 행복한 일상</h4><p>랙돌 코코와 코숏 나나의 포근한 하루</p></div></div>
-              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana-02.jpg" alt="사랑스러운 코코나나 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>사랑스러운 코코나나</h4><p>복실냥이 코코와 다정한 나나의 사랑스러운 모습</p></div></div>
-              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana-03.jpg" alt="귀여운 고양이 코코와 나나 LINE 스티커 세트" loading="lazy"></div><div class="sticker-slide-meta"><h4>귀여운 고양이 코코와 나나</h4><p>귀엽고 사랑스러운 코코와 나나의 모습을 담은 스티커</p></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco.jpg" alt="코코의 행복한 일상" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코의 행복한 일상</h4><p>동그랗고 귀여운 랙돌 코코의 사랑스러운 일상</p><span class="theme-kind">LINE</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana.jpg" alt="코코랑 나나의 행복한 일상" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코랑 나나의 행복한 일상</h4><p>랙돌 코코와 코숏 나나의 포근한 하루</p><span class="theme-kind">LINE</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana-02.jpg" alt="사랑스러운 코코나나" loading="lazy"></div><div class="sticker-slide-meta"><h4>사랑스러운 코코나나</h4><p>복실냥이 코코와 다정한 나나의 사랑스러운 모습</p><span class="theme-kind">LINE</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-coco-nana-03.jpg" alt="귀여운 고양이 코코와 나나" loading="lazy"></div><div class="sticker-slide-meta"><h4>귀여운 고양이 코코와 나나</h4><p>귀엽고 사랑스러운 코코와 나나의 모습을 담은 스티커</p><span class="theme-kind">LINE</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-theme-coco-nana-01.jpg" alt="코코랑 나나의 포근한 일상" loading="lazy"></div><div class="sticker-slide-meta"><h4>코코랑 나나의 포근한 일상</h4><p>LINE 테마 스토어 미리보기</p><span class="theme-kind">LINE THEME</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-theme-coco-nana-02.jpg" alt="LINE 테마 홈 화면" loading="lazy"></div><div class="sticker-slide-meta"><h4>LINE 테마 홈 화면</h4><p>코코와 나나로 꾸민 LINE 홈 화면</p><span class="theme-kind">LINE THEME</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-theme-coco-nana-03.jpg" alt="LINE 테마 대화 화면" loading="lazy"></div><div class="sticker-slide-meta"><h4>LINE 테마 대화 화면</h4><p>핑크 톤의 코코와 나나 LINE 대화 화면</p><span class="theme-kind">LINE THEME</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/line-theme-coco-nana-04.jpg" alt="LINE 테마 암호 화면" loading="lazy"></div><div class="sticker-slide-meta"><h4>LINE 테마 암호 화면</h4><p>코코와 나나가 들어간 LINE 암호 입력 화면</p><span class="theme-kind">LINE THEME</span></div></div>
+              <div class="sticker-slide"><div class="sticker-shot" tabindex="0"><img src="images/kakao-theme-coco-nana-01.jpg" alt="사랑스러운 코코나나 카톡테마" loading="lazy"></div><div class="sticker-slide-meta"><h4>사랑스러운 코코나나 카톡테마</h4><p>코코와 나나의 사랑스러운 모습을 담은 카카오톡 테마</p><span class="theme-kind">KAKAO THEME</span></div></div>
             </div>
           </div>
-          <div class="sticker-carousel-nav"><div class="sticker-carousel-dots" aria-label="슬라이드 선택"><button class="sticker-carousel-dot" type="button" aria-label="1번 스티커" aria-current="true"></button><button class="sticker-carousel-dot" type="button" aria-label="2번 스티커"></button><button class="sticker-carousel-dot" type="button" aria-label="3번 스티커"></button><button class="sticker-carousel-dot" type="button" aria-label="4번 스티커"></button></div></div>
-          <div class="scroll-note"><span>LINE STICKERS · 01 / 04</span><span>SLIDE TO EXPLORE ↔</span></div></article>
-
-        <article class="sticker-card"><div class="sticker-card-head"><div><span class="eyebrow">KAKAO THEME 01</span><h3>사랑스러운 코코나나 카톡테마</h3><p>코코와 나나의 사랑스러운 모습을 담은 카카오톡 테마</p></div><span class="line-label kakao-label">KAKAO</span></div><div class="sticker-shot" tabindex="0" aria-label="사랑스러운 코코나나 카카오톡 테마 미리보기 이미지, 세로로 스크롤 가능"><img src="images/kakao-theme-coco-nana-01.jpg" alt="사랑스러운 코코나나 카카오톡 테마 미리보기" loading="lazy"></div><div class="scroll-note"><span>KAKAO TALK THEME</span><span>SCROLL TO EXPLORE ↓</span></div></article>
+          <div class="sticker-carousel-nav"><div class="sticker-carousel-dots" aria-label="슬라이드 선택"><button class="sticker-carousel-dot" type="button" aria-label="1번 미리보기" aria-current="true"></button><button class="sticker-carousel-dot" type="button" aria-label="2번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="3번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="4번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="5번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="6번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="7번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="8번 미리보기"></button><button class="sticker-carousel-dot" type="button" aria-label="9번 미리보기"></button></div></div>
+          <div class="scroll-note"><span>COLLECTION · 01 / 09</span><span>SLIDE TO EXPLORE ↔</span></div>
+        </article>
       </div></div>
     </div></section>
 
