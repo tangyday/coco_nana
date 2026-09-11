@@ -733,6 +733,29 @@
     #capsuleDialog textarea{height:130px;line-height:1.7}
     .capsule-submit-state{opacity:.65;pointer-events:none}
 
+    /* our little story */
+    .info-card{position:relative}
+    .info-nav{
+      margin-top:22px;
+      display:flex;align-items:center;justify-content:center;
+      gap:12px;color:#c996a6;
+    }
+    .info-arrow{
+      width:30px;height:30px;padding:0;
+      display:grid;place-items:center;
+      border:1px solid #f0dfe5;
+      border-radius:50%;
+      background:#fff;
+      color:#9d7d87;
+      font-size:14px;
+      line-height:1;
+      cursor:pointer;
+      transition:transform .2s ease,background .2s ease;
+    }
+    .info-arrow:active{transform:scale(.94)}
+    .info-arrow:hover{background:#fff6f9}
+    .info-nav-dot{font-size:10px;color:#e5c5cf}
+
   </style>
 </head>
 <body>
@@ -875,16 +898,32 @@
       <div class="map-art embed"><iframe class="map-frame" title="용산 리베르 스튜디오 위치 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%9A%A9%EC%82%B0%EA%B5%AC%20%EC%9D%B4%EC%B4%8C%EB%A1%9C%205%209%EC%B8%B5&output=embed"></iframe></div>
       <div class="venue-info"><p class="venue-name" data-venue>용산 리베르 스튜디오</p><p class="venue-address" data-address>서울특별시 용산구 이촌로 5 9층</p><div class="button-row"><a class="btn" id="naverMap" target="_blank" rel="noopener">네이버 지도</a><a class="btn" id="kakaoMap" target="_blank" rel="noopener">카카오맵</a></div></div>
     </div>
-    <div class="notice"><strong>오시는 길 안내</strong><br>예식 장소는 <strong>용산 리베르 스튜디오</strong>이며,<br>서울특별시 용산구 이촌로 5, 9층에 위치해 있습니다.<br></div>
   </section>
 
   <section class="wedding-info reveal">
-    <p class="section-label" style="text-align:center">Our Manual</p>
-    <h2 class="section-title">우리 사용 설명서</h2>
-    <div class="info-scroll">
-      <article class="info-card"><span class="info-no">01</span><h3>우리가 만난 날</h3><p>2019년 6월 6일 현충일<br>어린이대공원에서<br>첫 만남에 바이킹 타기</p></article>
-      <article class="info-card"><span class="info-no">02</span><h3>같이 제일 많이 한 것</h3><p>카페 투어,<br>이상한 춤추고 노래하기,<br>바다 보러가기</p></article>
-      <article class="info-card"><span class="info-no">03</span><h3>앞으로 하고 싶은 것</h3><p>코코나나랑 넷이 지금처럼<br>건강하고 행복하기,<br>같이 일본 여행가기,<br>부자 되기!</p></article>
+    <p class="section-label" style="text-align:center">Our little story</p>
+    <h2 class="section-title">우리의 작은 이야기</h2>
+    <div class="info-scroll" id="storyCards">
+      <article class="info-card">
+        <span class="info-no">01</span>
+        <h3>우리가 만난 날</h3>
+        <p>2019년 6월 6일 현충일<br>어린이대공원에서<br>첫 만남에 바이킹 타기</p>
+      </article>
+      <article class="info-card">
+        <span class="info-no">02</span>
+        <h3>같이 제일 많이 한 것</h3>
+        <p>카페 투어,<br>이상한 춤추고 노래하기,<br>바다 보러가기</p>
+      </article>
+      <article class="info-card">
+        <span class="info-no">03</span>
+        <h3>앞으로 하고 싶은 것</h3>
+        <p>코코나나랑 넷이 지금처럼<br>건강하고 행복하기,<br>같이 일본 여행가기,<br>부자 되기!</p>
+      </article>
+    </div>
+    <div class="info-nav" aria-label="우리의 작은 이야기 카드 이동">
+      <button class="info-arrow" id="storyPrev" type="button" aria-label="이전 카드">←</button>
+      <span class="info-nav-dot">•</span>
+      <button class="info-arrow" id="storyNext" type="button" aria-label="다음 카드">→</button>
     </div>
   </section>
 
@@ -1111,11 +1150,14 @@
     if(!capsuleEntries.length){
       const p=document.createElement('p');
       p.className='capsule-empty';
-      p.textContent=capsuleApiReady()?'아직 담긴 마음이 없어요. 첫 타임캡슐을 남겨주세요 ♥':'Apps Script 웹 앱 주소를 연결하면 여기에 글이 누적돼요.';
+      p.textContent=capsuleApiReady()
+        ? '아직 담긴 마음이 없어요. 첫 타임캡슐을 남겨주세요 ♥'
+        : 'Apps Script 웹 앱 주소를 연결하면 여기에 글이 누적돼요.';
       guestList.appendChild(p);
       guestMore.hidden=true;
       return;
     }
+
     (showAllCapsules?capsuleEntries:capsuleEntries.slice(0,5)).forEach(entry=>{
       const item=document.createElement('article');
       item.className='guest-message';
@@ -1128,20 +1170,56 @@
       item.append(strong,time,p);
       guestList.appendChild(item);
     });
+
     guestMore.hidden=capsuleEntries.length<=5;
-    if(!guestMore.hidden) guestMore.textContent=showAllCapsules?'접어보기':`모두 보기 (${capsuleEntries.length})`;
+    if(!guestMore.hidden){
+      guestMore.textContent=showAllCapsules?'접어보기':`모두 보기 (${capsuleEntries.length})`;
+    }
+  }
+
+  /* Apps Script와의 통신을 JSONP로 처리해 GitHub Pages/모바일의 CORS 문제를 피합니다. */
+  function capsuleJsonp(params={}){
+    return new Promise((resolve,reject)=>{
+      if(!capsuleApiReady()) return reject(new Error('웹 앱 URL이 연결되지 않았습니다.'));
+
+      const callback='capsuleCallback_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+      const script=document.createElement('script');
+      const timer=setTimeout(()=>{
+        cleanup();
+        reject(new Error('타임캡슐 서버 응답 시간이 초과됐습니다.'));
+      },12000);
+
+      function cleanup(){
+        clearTimeout(timer);
+        script.remove();
+        try{delete window[callback]}catch(e){window[callback]=undefined}
+      }
+
+      window[callback]=(data)=>{
+        cleanup();
+        if(data && data.ok) resolve(data);
+        else reject(new Error((data&&data.error)||'타임캡슐 처리에 실패했습니다.'));
+      };
+
+      const qs=new URLSearchParams({...params,callback,_:Date.now()});
+      script.src=`${CONFIG.timeCapsuleWebAppUrl}?${qs.toString()}`;
+      script.onerror=()=>{
+        cleanup();
+        reject(new Error('타임캡슐 서버에 연결하지 못했습니다.'));
+      };
+      document.body.appendChild(script);
+    });
   }
 
   async function loadCapsules(){
     if(!capsuleApiReady()){renderCapsules();return}
     try{
-      const res=await fetch(`${CONFIG.timeCapsuleWebAppUrl}?action=list&t=${Date.now()}`,{cache:'no-store'});
-      const data=await res.json();
-      if(!data.ok) throw new Error(data.error||'load failed');
+      const data=await capsuleJsonp({action:'list'});
       capsuleEntries=Array.isArray(data.items)?data.items:[];
       renderCapsules();
     }catch(err){
-      guestList.innerHTML='<p class="capsule-empty">타임캡슐을 불러오지 못했어요.</p>';
+      guestList.innerHTML='<p class="capsule-empty">타임캡슐을 불러오지 못했어요. Apps Script 배포 버전을 확인해 주세요.</p>';
+      guestMore.hidden=true;
       console.error(err);
     }
   }
@@ -1150,6 +1228,7 @@
     if(!capsuleApiReady()){toast('먼저 Apps Script 웹 앱 주소를 연결해 주세요');return}
     capsuleDialog.showModal();
   });
+
   document.querySelector('#closeCapsuleDialog')?.addEventListener('click',()=>capsuleDialog.close());
 
   capsuleForm?.addEventListener('submit',async(e)=>{
@@ -1158,24 +1237,19 @@
     const name=String(fd.get('name')||'').trim();
     const message=String(fd.get('message')||'').trim();
     if(!name||!message)return;
+
     capsuleSubmit.disabled=true;
     capsuleSubmit.classList.add('capsule-submit-state');
     capsuleSubmit.textContent='담는 중...';
+
     try{
-      const body=new URLSearchParams({action:'add',name,message});
-      const res=await fetch(CONFIG.timeCapsuleWebAppUrl,{
-        method:'POST',
-        headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
-        body
-      });
-      const data=await res.json();
-      if(!data.ok) throw new Error(data.error||'save failed');
+      await capsuleJsonp({action:'add',name,message});
       capsuleForm.reset();
       capsuleDialog.close();
       toast('타임캡슐에 마음을 담았어요 ♥');
       await loadCapsules();
     }catch(err){
-      toast('저장하지 못했어요. 다시 시도해 주세요');
+      toast('저장하지 못했어요. Apps Script 배포를 확인해 주세요');
       console.error(err);
     }finally{
       capsuleSubmit.disabled=false;
@@ -1190,6 +1264,23 @@
   });
 
   loadCapsules();
+
+  /* Our little story card arrows */
+  const storyCards=document.querySelector('#storyCards');
+  const storyPrev=document.querySelector('#storyPrev');
+  const storyNext=document.querySelector('#storyNext');
+
+  function scrollStory(direction){
+    if(!storyCards) return;
+    const card=storyCards.querySelector('.info-card');
+    const gap=12;
+    const amount=(card?.getBoundingClientRect().width || storyCards.clientWidth*.84)+gap;
+    storyCards.scrollBy({left:direction*amount,behavior:'smooth'});
+  }
+
+  storyPrev?.addEventListener('click',()=>scrollStory(-1));
+  storyNext?.addEventListener('click',()=>scrollStory(1));
+
 </script>
 </body>
 </html>
