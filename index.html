@@ -160,6 +160,21 @@
     .pc-break { display:block; }
     .mobile-break { display:none; }
 
+    .game { color:var(--white); background:#000; }
+    .game-layout { display:grid; grid-template-columns:minmax(250px,.72fr) minmax(0,1.6fr); align-items:center; gap:clamp(36px,6vw,88px); }
+    .game-head h2 { margin:12px 0 34px; font-size:clamp(4rem,8vw,8rem); line-height:.76; letter-spacing:-.085em; text-transform:uppercase; }
+    .game-head>p { max-width:390px; margin:0; color:rgba(255,255,255,.78); font-family:"Noto Sans KR",sans-serif; font-size:.86rem; line-height:1.75; }
+    .game-card { position:relative; padding:0; border:1px solid rgba(255,255,255,.22); background:#111; overflow:hidden; }
+    .game-card::after { content:""; }
+    .game-thumb { width:100%; aspect-ratio:16 / 9; overflow:hidden; background:#1a1a1a; }
+    .game-thumb img { width:100%; height:100%; object-fit:cover; }
+    .game-card-body { padding:28px 30px 32px; }
+    .game-card .eyebrow { color:var(--acid); }
+    .game-card h3 { position:relative; z-index:1; max-width:620px; margin:20px 0 14px; font-family:"Noto Sans KR",sans-serif; font-size:clamp(2rem,4vw,4rem); line-height:1.05; letter-spacing:-.06em; }
+    .game-card p { position:relative; z-index:1; max-width:620px; margin:0; color:rgba(255,255,255,.8); font-family:"Noto Sans KR",sans-serif; font-size:.8rem; line-height:1.65; }
+    .game-link { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; align-self:flex-start; min-height:50px; margin-top:44px; padding:0 22px; border:1px solid var(--acid); color:#111; background:var(--acid); text-decoration:none; font-size:.72rem; font-weight:800; letter-spacing:.08em; transition:transform .2s ease, background .2s ease; }
+    .game-link:hover { transform:translateY(-2px); background:#e8ff76; }
+
     .manifesto { padding:0; background:#b66f4d; }
     .manifesto-grid { display:grid; grid-template-columns:1fr 1fr; min-height:650px; }
     .manifesto-copy { display:flex; flex-direction:column; justify-content:space-between; padding:72px 7vw 58px max(24px,calc((100vw - min(1440px,calc(100vw - 48px)))/2)); color:#fff8ee; }
@@ -173,7 +188,7 @@
     .footer b { font-size:.85rem; }
     .footer a { justify-self:end; text-underline-offset:4px; }
 
-    @media(max-width:920px){.pc-break{display:none}.hero{grid-template-columns:1fr}.hero-copy{min-height:560px;padding:50px 24px 36px}.hero-image{height:600px}.intro-grid{grid-template-columns:1fr}.intro-lead{position:static;margin-bottom:65px}.cat-card{grid-template-columns:42% 1fr}.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.emoticon-layout{grid-template-columns:1fr}.emoticon-head{position:static}.emoticon-head>p{max-width:580px}.sticker-shot{height:620px}.manifesto-grid{grid-template-columns:1fr}.manifesto-copy{min-height:560px;padding:60px 24px}.manifesto-img{height:560px}}
+    @media(max-width:920px){.pc-break{display:none}.hero{grid-template-columns:1fr}.hero-copy{min-height:560px;padding:50px 24px 36px}.hero-image{height:600px}.intro-grid{grid-template-columns:1fr}.intro-lead{position:static;margin-bottom:65px}.cat-card{grid-template-columns:42% 1fr}.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.emoticon-layout{grid-template-columns:1fr}.emoticon-head{position:static}.emoticon-head>p{max-width:580px}.sticker-shot{height:620px}.game-layout{grid-template-columns:1fr}.manifesto-grid{grid-template-columns:1fr}.manifesto-copy{min-height:560px;padding:60px 24px}.manifesto-img{height:560px}}
     @media(max-width:640px){.mobile-break{display:block}.wrap{width:min(100% - 26px,1440px)}.nav{grid-template-columns:1fr auto}.edition{display:none}nav{gap:12px;font-size:.56rem}.hero-copy{min-height:520px}.hero-image{height:480px}h1{font-size:clamp(4.8rem,25vw,7.2rem)}.hero-foot{grid-template-columns:1fr}.hero-foot a{justify-self:start;margin-top:15px}.hero-stamp{width:82px}section{padding:82px 0}.cat-card{grid-template-columns:1fr;gap:22px;padding-bottom:42px}.cat-card+.cat-card{padding-top:42px}.cat-meta{min-height:240px}.archive-head h2{font-size:clamp(4rem,20vw,7rem)}.archive-bar{display:block}.year-tabs{width:100%}.year-tab{min-width:70px;padding:0 11px}.archive-count{display:block;margin-top:12px}.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.archive-caption{display:block;padding:9px}.archive-title{font-size:.72rem}.archive-date{display:block;margin-top:3px}.pagination{margin-top:24px}.page-button{min-width:38px;height:38px;padding:0 10px}.sticker-grid{grid-template-columns:1fr}.sticker-card-head{min-height:118px}.sticker-shot{height:590px}.manifesto-copy{min-height:500px}.manifesto-img{height:480px}.footer{grid-template-columns:1fr 1fr}.footer span{display:none}}
     @media(max-width:640px){
       body{overflow-x:hidden}
@@ -240,7 +255,7 @@
   </style>
 </head>
 <body>
-  <header><div class="wrap nav"><a class="logo" href="#top">COCO <i>&amp;</i> NANA</a><nav aria-label="주요 메뉴"><a href="#archive">ARCHIVE</a><a href="#emoticon">EMOTICON</a><a href="#about">ABOUT</a></nav><span class="edition">EST. 2026 · VOL.01</span></div></header>
+  <header><div class="wrap nav"><a class="logo" href="#top">COCO <i>&amp;</i> NANA</a><nav aria-label="주요 메뉴"><a href="#archive">ARCHIVE</a><a href="#emoticon">EMOTICON</a><a href="#game">GAME</a><a href="#about">ABOUT</a></nav><span class="edition">EST. 2026 · VOL.01</span></div></header>
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy"><p class="eyebrow">A personal feline journal</p><h1 id="hero-title">Coco <span>&amp; Nana</span> Archive</h1><div class="hero-foot"><p>코코와 나나의 평범하고 사랑스러운 날들을<br class="mobile-break"><span class="pc-break"></span> 한 장씩 수집합니다.</p><a href="#archive">VIEW THE ARCHIVE →</a></div></div>
@@ -299,6 +314,23 @@
           <div class="scroll-note"><span>LINE + KAKAO THEME · 01 / 05</span><span>SLIDE TO EXPLORE ↔</span></div>
         </article>
       </div></div>
+    </div></section>
+
+    <section class="game" id="game" aria-labelledby="game-title"><div class="wrap">
+      <div class="game-layout">
+        <div class="game-head"><p class="eyebrow">Coco &amp; Nana mini game</p><h2 id="game-title">Game</h2><p>코코의 생일을 테마로 만든<br class="mobile-break"><span class="pc-break"></span> 온라인 방탈출 미니게임이에요.<br class="mobile-break"><span class="pc-break"></span> 집 안 곳곳의 힌트를 찾고 퀴즈를 풀어<br class="mobile-break"><span class="pc-break"></span> 코코의 생일을 완성해보세요.</p></div>
+        <article class="game-card">
+          <a class="game-thumb" href="https://nyamplay.pages.dev/coco-birthday/" target="_blank" rel="noreferrer" aria-label="코코의 몰래 생일파티 대작전 게임 열기">
+            <img src="images/game-coco-birthday.png" alt="코코의 몰래 생일파티 대작전 게임 썸네일" loading="lazy">
+          </a>
+          <div class="game-card-body">
+            <p class="eyebrow">ONLINE ESCAPE GAME</p>
+            <h3>코코의 몰래 생일파티 대작전</h3>
+            <p>코코와 나나의 집을 돌아다니며 숨은 단서를 찾고,<br class="mobile-break"><span class="pc-break"></span> 퀴즈를 해결해 생일 파티를 준비하는 온라인 방탈출 게임입니다.</p>
+            <a class="game-link" href="https://nyamplay.pages.dev/coco-birthday/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
+          </div>
+        </article>
+      </div>
     </div></section>
 
     <section class="manifesto"><div class="manifesto-grid"><div class="manifesto-copy"><p class="eyebrow">A note from home</p><h2>Keep<br>Every<br>Moment.</h2><p>낮잠 자는 모습도, 장난치는 표정도,<br class="mobile-break"> 가만히 바라보는 눈빛도.<br class="mobile-break"><span class="pc-break"></span> 평범해서 더 소중한 코코와 나나의 하루를<br class="mobile-break"> 오래오래 남겨둘게요.</p></div><div class="manifesto-img"><img src="images/bottom.png" alt="밥그릇 앞에 나란히 앉은 코코와 나나"></div></div></section>
