@@ -161,7 +161,10 @@
     .mobile-break { display:none; }
 
     .game { color:var(--white); background:#000; }
-    .game-layout { display:grid; grid-template-columns:minmax(250px,.72fr) minmax(0,1.6fr); align-items:center; gap:clamp(36px,6vw,88px); }
+    .game-layout { display:grid; grid-template-columns:minmax(250px,.72fr) minmax(0,1.6fr); align-items:start; gap:clamp(36px,6vw,88px); }
+    .game-layout > .game-card { grid-column:2; }
+    .game-layout > .game-head { grid-column:1; grid-row:1 / span 2; position:sticky; top:110px; }
+    .game-layout > .game-card + .game-card { margin-top:24px; }
     .game-head h2 { margin:12px 0 34px; font-size:clamp(4rem,8vw,8rem); line-height:.76; letter-spacing:-.085em; text-transform:uppercase; }
     .game-head>p { max-width:390px; margin:0; color:rgba(255,255,255,.78); font-family:"Noto Sans KR",sans-serif; font-size:.86rem; line-height:1.75; }
     .game-card { position:relative; padding:0; border:1px solid rgba(255,255,255,.22); background:#111; overflow:hidden; }
@@ -188,7 +191,7 @@
     .footer b { font-size:.85rem; }
     .footer a { justify-self:end; text-underline-offset:4px; }
 
-    @media(max-width:920px){.pc-break{display:none}.hero{grid-template-columns:1fr}.hero-copy{min-height:560px;padding:50px 24px 36px}.hero-image{height:600px}.intro-grid{grid-template-columns:1fr}.intro-lead{position:static;margin-bottom:65px}.cat-card{grid-template-columns:42% 1fr}.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.emoticon-layout{grid-template-columns:1fr}.emoticon-head{position:static}.emoticon-head>p{max-width:580px}.sticker-shot{height:620px}.game-layout{grid-template-columns:1fr}.manifesto-grid{grid-template-columns:1fr}.manifesto-copy{min-height:560px;padding:60px 24px}.manifesto-img{height:560px}}
+    @media(max-width:920px){.pc-break{display:none}.hero{grid-template-columns:1fr}.hero-copy{min-height:560px;padding:50px 24px 36px}.hero-image{height:600px}.intro-grid{grid-template-columns:1fr}.intro-lead{position:static;margin-bottom:65px}.cat-card{grid-template-columns:42% 1fr}.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.emoticon-layout{grid-template-columns:1fr}.emoticon-head{position:static}.emoticon-head>p{max-width:580px}.sticker-shot{height:620px}.game-layout{grid-template-columns:1fr}.game-layout > .game-head{grid-column:1;grid-row:auto;position:static}.game-layout > .game-card{grid-column:1}.game-layout > .game-card + .game-card{margin-top:0}.manifesto-grid{grid-template-columns:1fr}.manifesto-copy{min-height:560px;padding:60px 24px}.manifesto-img{height:560px}}
     @media(max-width:640px){.mobile-break{display:block}.wrap{width:min(100% - 26px,1440px)}.nav{grid-template-columns:1fr auto}.edition{display:none}nav{gap:12px;font-size:.56rem}.hero-copy{min-height:520px}.hero-image{height:480px}h1{font-size:clamp(4.8rem,25vw,7.2rem)}.hero-foot{grid-template-columns:1fr}.hero-foot a{justify-self:start;margin-top:15px}.hero-stamp{width:82px}section{padding:82px 0}.cat-card{grid-template-columns:1fr;gap:22px;padding-bottom:42px}.cat-card+.cat-card{padding-top:42px}.cat-meta{min-height:240px}.archive-head h2{font-size:clamp(4rem,20vw,7rem)}.archive-bar{display:block}.year-tabs{width:100%}.year-tab{min-width:70px;padding:0 11px}.archive-count{display:block;margin-top:12px}.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.archive-caption{display:block;padding:9px}.archive-title{font-size:.72rem}.archive-date{display:block;margin-top:3px}.pagination{margin-top:24px}.page-button{min-width:38px;height:38px;padding:0 10px}.sticker-grid{grid-template-columns:1fr}.sticker-card-head{min-height:118px}.sticker-shot{height:590px}.manifesto-copy{min-height:500px}.manifesto-img{height:480px}.footer{grid-template-columns:1fr 1fr}.footer span{display:none}}
     @media(max-width:640px){
       body{overflow-x:hidden}
@@ -329,6 +332,17 @@
             <h3>코코의 몰래 생일파티 대작전</h3>
             <p>코코와 나나의 집을 돌아다니며 숨은 단서를 찾고,<br class="mobile-break"><span class="pc-break"></span> 퀴즈를 해결해 생일 파티를 준비하는 온라인 방탈출 게임입니다.</p>
             <a class="game-link" href="https://nyamplay.pages.dev/coco-birthday/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
+          </div>
+        </article>
+        <article class="game-card">
+          <a class="game-thumb" href="https://nyamplay.pages.dev/churu-mystery/" target="_blank" rel="noreferrer" aria-label="사라진 츄르를 찾아라! 게임 열기">
+            <img src="images/game-churu-mystery.png" alt="사라진 츄르를 찾아라! 게임 썸네일" loading="lazy">
+          </a>
+          <div class="game-card-body">
+            <p class="eyebrow">ONLINE ESCAPE GAME</p>
+            <h3>사라진 츄르를 찾아라!</h3>
+            <p>집 안 곳곳에 남겨진 단서와 퍼즐을 풀며,<br class="mobile-break"><span class="pc-break"></span> 사라진 츄르의 행방을 추적하는 온라인 방탈출 게임입니다.</p>
+            <a class="game-link" href="https://nyamplay.pages.dev/churu-mystery/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
           </div>
         </article>
       </div>
