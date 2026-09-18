@@ -156,27 +156,38 @@
     .sticker-lightbox-prev { left:18px; }
     .sticker-lightbox-next { right:18px; }
 
-    .scroll-note { display:flex; justify-content:space-between; gap:10px; padding:10px 2px 0; color:#777168; font-size:.62rem; font-weight:700; letter-spacing:.08em; }
+    .scroll-note { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 2px 0; color:#777168; font-size:.62rem; font-weight:700; letter-spacing:.08em; }
+    .sticker-note-arrows { display:flex; align-items:center; gap:6px; }
+    .sticker-note-arrow { display:grid; place-items:center; width:28px; height:28px; padding:0; border:1px solid rgba(17,17,17,.22); color:#111; background:transparent; cursor:pointer; font-size:1rem; line-height:1; transition:background .2s ease,color .2s ease; }
+    .sticker-note-arrow:hover { color:#fff; background:#111; }
     .pc-break { display:block; }
     .mobile-break { display:none; }
 
     .game { color:var(--white); background:#000; }
     .game-layout { display:grid; grid-template-columns:minmax(250px,.72fr) minmax(0,1.6fr); align-items:start; gap:clamp(36px,6vw,88px); }
-    .game-layout > .game-card { grid-column:2; }
-    .game-layout > .game-head { grid-column:1; grid-row:1 / span 2; position:sticky; top:110px; }
-    .game-layout > .game-card + .game-card { margin-top:24px; }
+    .game-head { grid-column:1; position:sticky; top:110px; }
     .game-head h2 { margin:12px 0 34px; font-size:clamp(4rem,8vw,8rem); line-height:.76; letter-spacing:-.085em; text-transform:uppercase; }
     .game-head>p { max-width:390px; margin:0; color:rgba(255,255,255,.78); font-family:"Noto Sans KR",sans-serif; font-size:.86rem; line-height:1.75; }
-    .game-card { position:relative; padding:0; border:1px solid rgba(255,255,255,.22); background:#111; overflow:hidden; }
-    .game-card::after { content:""; }
-    .game-thumb { width:100%; aspect-ratio:16 / 9; overflow:hidden; background:#1a1a1a; }
+
+    .game-content { grid-column:2; min-width:0; }
+    .game-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .game-card { position:relative; min-width:0; padding:0; border:1px solid rgba(255,255,255,.22); background:#111; overflow:hidden; }
+    .game-card[hidden] { display:none !important; }
+    .game-thumb { display:block; width:100%; aspect-ratio:16 / 9; overflow:hidden; background:#1a1a1a; }
     .game-thumb img { width:100%; height:100%; object-fit:cover; }
-    .game-card-body { padding:28px 30px 32px; }
-    .game-card .eyebrow { color:var(--acid); }
-    .game-card h3 { position:relative; z-index:1; max-width:620px; margin:20px 0 14px; font-family:"Noto Sans KR",sans-serif; font-size:clamp(1.85rem,3.6vw,3.7rem); line-height:1.05; letter-spacing:-.06em; }
-    .game-card p { position:relative; z-index:1; max-width:620px; margin:0; color:rgba(255,255,255,.8); font-family:"Noto Sans KR",sans-serif; font-size:.8rem; line-height:1.65; }
-    .game-link { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; align-self:flex-start; min-height:50px; margin-top:44px; padding:0 22px; border:1px solid var(--acid); color:#111; background:var(--acid); text-decoration:none; font-size:.72rem; font-weight:800; letter-spacing:.08em; transition:transform .2s ease, background .2s ease; }
+    .game-card-body { display:flex; flex-direction:column; min-height:250px; padding:22px 22px 24px; }
+    .game-card .eyebrow { color:var(--acid); font-size:.62rem; }
+    .game-card h3 { position:relative; z-index:1; margin:16px 0 12px; font-family:"Noto Sans KR",sans-serif; font-size:clamp(1.2rem,1.7vw,1.7rem); line-height:1.15; letter-spacing:-.055em; }
+    .game-card p { position:relative; z-index:1; margin:0; color:rgba(255,255,255,.8); font-family:"Noto Sans KR",sans-serif; font-size:.78rem; line-height:1.65; }
+    .game-link { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; align-self:flex-start; min-height:44px; margin-top:auto; padding:0 18px; border:1px solid var(--acid); color:#111; background:var(--acid); text-decoration:none; font-size:.68rem; font-weight:800; letter-spacing:.08em; transition:transform .2s ease, background .2s ease; }
     .game-link:hover { transform:translateY(-2px); background:#e8ff76; }
+
+    .game-pagination { display:flex; justify-content:center; align-items:center; gap:7px; margin-top:28px; }
+    .game-page-btn { min-width:38px; height:38px; padding:0 11px; border:1px solid rgba(255,255,255,.35); color:#fff; background:transparent; cursor:pointer; font-size:.7rem; font-weight:700; }
+    .game-page-btn[aria-current="page"] { color:#111; border-color:var(--acid); background:var(--acid); }
+    .game-page-btn:disabled { opacity:.32; cursor:default; }
+
+    .game-mobile-dots { display:none; }
 
     .manifesto { padding:0; background:#b66f4d; }
     .manifesto-grid { display:grid; grid-template-columns:1fr 1fr; min-height:650px; }
@@ -191,7 +202,7 @@
     .footer b { font-size:.85rem; }
     .footer a { justify-self:end; text-underline-offset:4px; }
 
-    @media(max-width:920px){.pc-break{display:none}.hero{grid-template-columns:1fr}.hero-copy{min-height:560px;padding:50px 24px 36px}.hero-image{height:600px}.intro-grid{grid-template-columns:1fr}.intro-lead{position:static;margin-bottom:65px}.cat-card{grid-template-columns:42% 1fr}.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.emoticon-layout{grid-template-columns:1fr}.emoticon-head{position:static}.emoticon-head>p{max-width:580px}.sticker-shot{height:620px}.game-layout{grid-template-columns:1fr}.game-layout > .game-head{grid-column:1;grid-row:auto;position:static}.game-layout > .game-card{grid-column:1}.game-layout > .game-card + .game-card{margin-top:0}.manifesto-grid{grid-template-columns:1fr}.manifesto-copy{min-height:560px;padding:60px 24px}.manifesto-img{height:560px}}
+    @media(max-width:920px){.pc-break{display:none}.hero{grid-template-columns:1fr}.hero-copy{min-height:560px;padding:50px 24px 36px}.hero-image{height:600px}.intro-grid{grid-template-columns:1fr}.intro-lead{position:static;margin-bottom:65px}.cat-card{grid-template-columns:42% 1fr}.archive-head{grid-template-columns:1fr}.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.emoticon-layout{grid-template-columns:1fr}.emoticon-head{position:static}.emoticon-head>p{max-width:580px}.sticker-shot{height:620px}.game-layout{grid-template-columns:1fr}.game-head{grid-column:1;position:static}.game-content{grid-column:1}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.manifesto-grid{grid-template-columns:1fr}.manifesto-copy{min-height:560px;padding:60px 24px}.manifesto-img{height:560px}}
     @media(max-width:640px){.mobile-break{display:block}.wrap{width:min(100% - 26px,1440px)}.nav{grid-template-columns:1fr auto}.edition{display:none}nav{gap:12px;font-size:.56rem}.hero-copy{min-height:520px}.hero-image{height:480px}h1{font-size:clamp(4.8rem,25vw,7.2rem)}.hero-foot{grid-template-columns:1fr}.hero-foot a{justify-self:start;margin-top:15px}.hero-stamp{width:82px}section{padding:82px 0}.cat-card{grid-template-columns:1fr;gap:22px;padding-bottom:42px}.cat-card+.cat-card{padding-top:42px}.cat-meta{min-height:240px}.archive-head h2{font-size:clamp(4rem,20vw,7rem)}.archive-bar{display:block}.year-tabs{width:100%}.year-tab{min-width:70px;padding:0 11px}.archive-count{display:block;margin-top:12px}.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.archive-caption{display:block;padding:9px}.archive-title{font-size:.72rem}.archive-date{display:block;margin-top:3px}.pagination{margin-top:24px}.page-button{min-width:38px;height:38px;padding:0 10px}.sticker-grid{grid-template-columns:1fr}.sticker-card-head{min-height:118px}.sticker-shot{height:590px}.manifesto-copy{min-height:500px}.manifesto-img{height:480px}.footer{grid-template-columns:1fr 1fr}.footer span{display:none}}
     @media(max-width:640px){
       body{overflow-x:hidden}
@@ -213,7 +224,19 @@
       .sticker-card{padding:12px}.sticker-card-head{min-height:0;padding:4px 2px 18px}.line-label{top:4px;right:2px}.sticker-card h3{font-size:1.25rem}
       .sticker-shot{height:min(570px,70svh)}.scroll-note{gap:6px;font-size:.58rem;letter-spacing:.04em}
       .sticker-lightbox{width:calc(100% - 16px)}.sticker-lightbox-media{min-height:60svh;max-height:92svh;padding:12px 42px}.sticker-lightbox-close{top:10px;right:10px;font-size:1.5rem}.sticker-lightbox-nav{font-size:1.6rem;padding:4px}.sticker-lightbox-prev{left:8px}.sticker-lightbox-next{right:8px}
+      .game-content{overflow:hidden}
+      .game-grid{display:flex;grid-template-columns:none;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-x pan-y}
+      .game-grid::-webkit-scrollbar{display:none}
+      .game-card{flex:0 0 100%;scroll-snap-align:start;border-right:0}
+      .game-card:last-child{border-right:1px solid rgba(255,255,255,.22)}
+      .game-card[hidden]{display:block !important}
+      .game-card-body{min-height:0;padding:22px 20px 24px}
       .game-card h3{max-width:none;font-size:clamp(1.22rem,5.35vw,1.52rem);line-height:1.1;letter-spacing:-.055em;white-space:nowrap}
+      .game-link{margin-top:30px}
+      .game-pagination{display:none}
+      .game-mobile-dots{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:18px}
+      .game-mobile-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer}
+      .game-mobile-dot[aria-current="true"]{width:20px;border-radius:999px;background:var(--acid)}
       .manifesto-copy{min-height:430px;padding:50px 20px 42px}.manifesto-copy h2{font-size:3.9rem}.manifesto-copy p{font-size:.9rem}.manifesto-img{height:420px}
       .footer{grid-template-columns:1fr;gap:12px}.footer a{justify-self:start}
       .lightbox{width:calc(100% - 16px)}.lightbox-media{min-height:55svh;max-height:90svh;padding:12px 44px}.lightbox-close{top:10px;right:10px;font-size:1.45rem}.lightbox-nav{font-size:1.5rem;padding:4px}.lightbox-prev{left:8px}.lightbox-next{right:8px}
@@ -298,7 +321,7 @@
             </div>
           </div>
           <div class="sticker-carousel-nav"><div class="sticker-carousel-dots" aria-label="슬라이드 선택"><button class="sticker-carousel-dot" type="button" aria-label="1번 스티커" aria-current="true"></button><button class="sticker-carousel-dot" type="button" aria-label="2번 스티커"></button><button class="sticker-carousel-dot" type="button" aria-label="3번 스티커"></button><button class="sticker-carousel-dot" type="button" aria-label="4번 스티커"></button></div></div>
-          <div class="scroll-note"><span>LINE STICKERS · 01 / 04</span><span>SLIDE TO EXPLORE ↔</span></div></article>
+          <div class="scroll-note"><span>LINE STICKERS · 01 / 04</span><span class="sticker-note-arrows"><button class="sticker-note-arrow sticker-note-prev" type="button" aria-label="이전 LINE 스티커">‹</button><button class="sticker-note-arrow sticker-note-next" type="button" aria-label="다음 LINE 스티커">›</button></span></div></article>
 
         <article class="sticker-card">
           <div class="sticker-card-head">
@@ -315,7 +338,7 @@
             </div>
           </div>
           <div class="sticker-carousel-nav"><div class="sticker-carousel-dots" aria-label="테마 슬라이드 선택"><button class="sticker-carousel-dot" type="button" aria-label="1번 테마" aria-current="true"></button><button class="sticker-carousel-dot" type="button" aria-label="2번 테마"></button><button class="sticker-carousel-dot" type="button" aria-label="3번 테마"></button><button class="sticker-carousel-dot" type="button" aria-label="4번 테마"></button><button class="sticker-carousel-dot" type="button" aria-label="5번 테마"></button></div></div>
-          <div class="scroll-note"><span>LINE + KAKAO THEME · 01 / 05</span><span>SLIDE TO EXPLORE ↔</span></div>
+          <div class="scroll-note"><span>LINE + KAKAO THEME · 01 / 05</span><span class="sticker-note-arrows"><button class="sticker-note-arrow sticker-note-prev" type="button" aria-label="이전 테마">‹</button><button class="sticker-note-arrow sticker-note-next" type="button" aria-label="다음 테마">›</button></span></div>
         </article>
       </div></div>
     </div></section>
@@ -323,7 +346,9 @@
     <section class="game" id="game" aria-labelledby="game-title"><div class="wrap">
       <div class="game-layout">
         <div class="game-head"><p class="eyebrow">Coco &amp; Nana mini game</p><h2 id="game-title">Game</h2><p>코코의 몰래하는 생일파티를 테마로 만든<br class="mobile-break"><span class="pc-break"></span> 온라인 방탈출 미니게임이에요.<br class="mobile-break"><span class="pc-break"></span> 집 안 곳곳의 힌트를 찾고 퀴즈를 풀어<br class="mobile-break"><span class="pc-break"></span> 코코의 생일을 완성해보세요.</p></div>
-        <article class="game-card">
+                <div class="game-content">
+          <div class="game-grid" id="game-grid">
+<article class="game-card">
           <a class="game-thumb" href="https://nyamplay.pages.dev/coco-birthday/" target="_blank" rel="noreferrer" aria-label="코코의 몰래 생일파티 대작전 게임 열기">
             <img src="images/game-coco-birthday.png" alt="코코의 몰래 생일파티 대작전 게임 썸네일" loading="lazy">
           </a>
@@ -356,7 +381,11 @@
             <a class="game-link" href="https://nyamplay.pages.dev/catcafe-firstday/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
           </div>
         </article>
-      </div>
+                </div>
+          <nav class="game-pagination" id="game-pagination" aria-label="게임 페이지"></nav>
+          <div class="game-mobile-dots" id="game-mobile-dots" aria-label="게임 슬라이드 선택"></div>
+        </div>
+</div>
     </div></section>
 
     <section class="manifesto"><div class="manifesto-grid"><div class="manifesto-copy"><p class="eyebrow">A note from home</p><h2>Keep<br>Every<br>Moment.</h2><p>낮잠 자는 모습도, 장난치는 표정도,<br class="mobile-break"> 가만히 바라보는 눈빛도.<br class="mobile-break"><span class="pc-break"></span> 평범해서 더 소중한 코코와 나나의 하루를<br class="mobile-break"> 오래오래 남겨둘게요.</p></div><div class="manifesto-img"><img src="images/bottom.png" alt="밥그릇 앞에 나란히 앉은 코코와 나나"></div></div></section>
@@ -613,6 +642,171 @@
         touchStartX = null;
       }, {passive:true});
     })();
+
+  
+    // Game grid pagination (desktop/tablet) + swipe slider (mobile)
+    (() => {
+      const grid = document.getElementById('game-grid');
+      const pagination = document.getElementById('game-pagination');
+      const dots = document.getElementById('game-mobile-dots');
+      if (!grid || !pagination || !dots) return;
+
+      const cards = Array.from(grid.querySelectorAll('.game-card'));
+      const pageSize = 4;
+      let currentPage = 1;
+      let mobileIndex = 0;
+
+      function isMobile() {
+        return window.matchMedia('(max-width: 640px)').matches;
+      }
+
+      function renderDesktopPage(page) {
+        if (isMobile()) {
+          cards.forEach(card => card.hidden = false);
+          return;
+        }
+
+        const totalPages = Math.max(1, Math.ceil(cards.length / pageSize));
+        currentPage = Math.min(Math.max(1, page), totalPages);
+        const start = (currentPage - 1) * pageSize;
+        const end = start + pageSize;
+
+        cards.forEach((card, i) => {
+          card.hidden = !(i >= start && i < end);
+        });
+
+        pagination.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        const prev = document.createElement('button');
+        prev.type = 'button';
+        prev.className = 'game-page-btn';
+        prev.textContent = '‹';
+        prev.setAttribute('aria-label', '이전 게임 페이지');
+        prev.disabled = currentPage === 1;
+        prev.addEventListener('click', () => renderDesktopPage(currentPage - 1));
+        pagination.appendChild(prev);
+
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'game-page-btn';
+          btn.textContent = i;
+          if (i === currentPage) btn.setAttribute('aria-current', 'page');
+          btn.setAttribute('aria-label', `${i}번 게임 페이지`);
+          btn.addEventListener('click', () => renderDesktopPage(i));
+          pagination.appendChild(btn);
+        }
+
+        const next = document.createElement('button');
+        next.type = 'button';
+        next.className = 'game-page-btn';
+        next.textContent = '›';
+        next.setAttribute('aria-label', '다음 게임 페이지');
+        next.disabled = currentPage === totalPages;
+        next.addEventListener('click', () => renderDesktopPage(currentPage + 1));
+        pagination.appendChild(next);
+      }
+
+      function buildMobileDots() {
+        dots.innerHTML = '';
+        cards.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'game-mobile-dot';
+          dot.setAttribute('aria-label', `${i + 1}번 게임 보기`);
+          if (i === mobileIndex) dot.setAttribute('aria-current', 'true');
+          dot.addEventListener('click', () => {
+            grid.scrollTo({ left: grid.clientWidth * i, behavior: 'smooth' });
+          });
+          dots.appendChild(dot);
+        });
+      }
+
+      function updateMobileDots() {
+        if (!isMobile()) return;
+        const width = grid.clientWidth || 1;
+        mobileIndex = Math.max(0, Math.min(cards.length - 1, Math.round(grid.scrollLeft / width)));
+        dots.querySelectorAll('.game-mobile-dot').forEach((dot, i) => {
+          if (i === mobileIndex) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+      }
+
+      let scrollTimer;
+      grid.addEventListener('scroll', () => {
+        if (!isMobile()) return;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(updateMobileDots, 60);
+      }, { passive: true });
+
+      function syncLayout() {
+        cards.forEach(card => card.hidden = false);
+        if (isMobile()) {
+          pagination.innerHTML = '';
+          buildMobileDots();
+          requestAnimationFrame(() => {
+            grid.scrollLeft = grid.clientWidth * mobileIndex;
+            updateMobileDots();
+          });
+        } else {
+          dots.innerHTML = '';
+          grid.scrollLeft = 0;
+          renderDesktopPage(currentPage);
+        }
+      }
+
+      window.addEventListener('resize', syncLayout);
+      syncLayout();
+    })();
+
+  
+    // Small arrow buttons in emoticon/theme footer
+    document.querySelectorAll('.sticker-card').forEach(card => {
+      const carousel = card.querySelector('.sticker-carousel');
+      const track = card.querySelector('.sticker-carousel-track');
+      const slides = Array.from(card.querySelectorAll('.sticker-slide'));
+      const dots = Array.from(card.querySelectorAll('.sticker-carousel-dot'));
+      const prevBtn = card.querySelector('.sticker-note-prev');
+      const nextBtn = card.querySelector('.sticker-note-next');
+      const counter = card.querySelector('.scroll-note > span:first-child');
+      if (!carousel || !track || slides.length === 0 || !prevBtn || !nextBtn) return;
+
+      function getIndex() {
+        const transform = getComputedStyle(track).transform;
+        if (!transform || transform === 'none') {
+          return dots.findIndex(dot => dot.getAttribute('aria-current') === 'true') >= 0
+            ? dots.findIndex(dot => dot.getAttribute('aria-current') === 'true')
+            : 0;
+        }
+        const match = transform.match(/matrix\(([^)]+)\)/);
+        if (match) {
+          const vals = match[1].split(',').map(Number);
+          const tx = vals[4] || 0;
+          const width = carousel.clientWidth || 1;
+          return Math.max(0, Math.min(slides.length - 1, Math.round(Math.abs(tx) / width)));
+        }
+        return 0;
+      }
+
+      function goTo(index) {
+        index = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+
+        dots.forEach((dot, i) => {
+          if (i === index) dot.setAttribute('aria-current', 'true');
+          else dot.removeAttribute('aria-current');
+        });
+
+        if (counter) {
+          const base = counter.textContent.split('·')[0].trim();
+          counter.textContent = `${base} · ${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        }
+      }
+
+      prevBtn.addEventListener('click', () => goTo(getIndex() - 1));
+      nextBtn.addEventListener('click', () => goTo(getIndex() + 1));
+    });
 
   </script>
 </body>
