@@ -170,6 +170,9 @@
     .game-head>p { max-width:390px; margin:0; color:rgba(255,255,255,.78); font-family:"Noto Sans KR",sans-serif; font-size:.86rem; line-height:1.75; }
 
     .game-content { grid-column:2; min-width:0; }
+    .game-group + .game-group { margin-top:42px; }
+    .game-theme-label { display:flex; align-items:center; gap:10px; margin:0 0 13px; color:rgba(255,255,255,.64); font-size:.62rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    .game-theme-label::after { content:""; flex:1; height:1px; background:rgba(255,255,255,.18); }
     .game-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
     .game-card { position:relative; min-width:0; padding:0; border:1px solid rgba(255,255,255,.22); background:#111; overflow:hidden; }
     .game-card[hidden] { display:none !important; }
@@ -225,6 +228,8 @@
       .sticker-shot{height:min(570px,70svh)}.scroll-note{gap:6px;font-size:.58rem;letter-spacing:.04em}
       .sticker-lightbox{width:calc(100% - 16px)}.sticker-lightbox-media{min-height:60svh;max-height:92svh;padding:12px 42px}.sticker-lightbox-close{top:10px;right:10px;font-size:1.5rem}.sticker-lightbox-nav{font-size:1.6rem;padding:4px}.sticker-lightbox-prev{left:8px}.sticker-lightbox-next{right:8px}
       .game-content{overflow:hidden}
+      .game-group + .game-group{margin-top:38px}
+      .game-theme-label{margin-bottom:11px;font-size:.59rem;letter-spacing:.14em}
       .game-grid{display:flex;grid-template-columns:none;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-x pan-y}
       .game-grid::-webkit-scrollbar{display:none}
       .game-card{flex:0 0 100%;scroll-snap-align:start;border-right:0}
@@ -234,7 +239,7 @@
       .game-card h3{max-width:none;font-size:clamp(1.22rem,5.35vw,1.52rem);line-height:1.1;letter-spacing:-.055em;white-space:nowrap}
       .game-link{margin-top:30px}
       .game-pagination{display:none}
-      .game-mobile-dots{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:18px}
+      .game-mobile-dots{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:14px}
       .game-mobile-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer}
       .game-mobile-dot[aria-current="true"]{width:20px;border-radius:999px;background:var(--acid)}
       .manifesto-copy{min-height:430px;padding:50px 20px 42px}.manifesto-copy h2{font-size:3.9rem}.manifesto-copy p{font-size:.9rem}.manifesto-img{height:420px}
@@ -346,9 +351,11 @@
     <section class="game" id="game" aria-labelledby="game-title"><div class="wrap">
       <div class="game-layout">
         <div class="game-head"><p class="eyebrow">Coco &amp; Nana mini game</p><h2 id="game-title">Game</h2><p>코코의 몰래하는 생일파티를 테마로 만든<br class="mobile-break"><span class="pc-break"></span> 온라인 방탈출 미니게임이에요.<br class="mobile-break"><span class="pc-break"></span> 집 안 곳곳의 힌트를 찾고 퀴즈를 풀어<br class="mobile-break"><span class="pc-break"></span> 코코의 생일을 완성해보세요.</p></div>
-                <div class="game-content">
-          <div class="game-grid" id="game-grid">
-<article class="game-card">
+        <div class="game-content">
+          <div class="game-group" data-game-group="home">
+            <p class="game-theme-label">HOME ADVENTURES</p>
+            <div class="game-grid" id="game-grid-home" aria-label="HOME ADVENTURES 게임">
+        <article class="game-card">
           <a class="game-thumb" href="https://nyamplay.pages.dev/coco-birthday/" target="_blank" rel="noreferrer" aria-label="코코의 몰래 생일파티 대작전 게임 열기">
             <img src="images/game-coco-birthday.png" alt="코코의 몰래 생일파티 대작전 게임 썸네일" loading="lazy">
           </a>
@@ -403,6 +410,13 @@
             <a class="game-link" href="https://nyamplay.pages.dev/rooftop-mission/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
           </div>
         </article>
+            </div>
+            <div class="game-mobile-dots" id="game-mobile-dots-home" aria-label="HOME ADVENTURES 게임 슬라이드 선택"></div>
+          </div>
+
+          <div class="game-group" data-game-group="fantasy">
+            <p class="game-theme-label">FANTASY ADVENTURES</p>
+            <div class="game-grid" id="game-grid-fantasy" aria-label="FANTASY ADVENTURES 게임">
         <article class="game-card">
           <a class="game-thumb" href="https://nyamplay.pages.dev/magical-cat/" target="_blank" rel="noreferrer" aria-label="마법학교 대소동 게임 열기">
             <img src="images/og-magic-school.png" alt="마법학교 대소동 게임 썸네일" loading="lazy">
@@ -425,9 +439,9 @@
             <a class="game-link" href="https://nyamplay.pages.dev/space-station/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
           </div>
         </article>
-                </div>
-          <nav class="game-pagination" id="game-pagination" aria-label="게임 페이지"></nav>
-          <div class="game-mobile-dots" id="game-mobile-dots" aria-label="게임 슬라이드 선택"></div>
+            </div>
+            <div class="game-mobile-dots" id="game-mobile-dots-fantasy" aria-label="FANTASY ADVENTURES 게임 슬라이드 선택"></div>
+          </div>
         </div>
 </div>
     </div></section>
@@ -688,120 +702,70 @@
     })();
 
   
-    // Game grid pagination (desktop/tablet) + swipe slider (mobile)
+    // Independent game sliders by theme (mobile)
     (() => {
-      const grid = document.getElementById('game-grid');
-      const pagination = document.getElementById('game-pagination');
-      const dots = document.getElementById('game-mobile-dots');
-      if (!grid || !pagination || !dots) return;
+      const groups = Array.from(document.querySelectorAll('.game-group'));
+      if (!groups.length) return;
 
-      const cards = Array.from(grid.querySelectorAll('.game-card'));
-      const pageSize = 4;
-      let currentPage = 1;
-      let mobileIndex = 0;
+      const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
 
-      function isMobile() {
-        return window.matchMedia('(max-width: 640px)').matches;
-      }
+      groups.forEach(group => {
+        const grid = group.querySelector('.game-grid');
+        const dots = group.querySelector('.game-mobile-dots');
+        const cards = Array.from(group.querySelectorAll('.game-card'));
+        if (!grid || !dots || !cards.length) return;
 
-      function renderDesktopPage(page) {
-        if (isMobile()) {
-          cards.forEach(card => card.hidden = false);
-          return;
-        }
+        let mobileIndex = 0;
+        let scrollTimer;
 
-        const totalPages = Math.max(1, Math.ceil(cards.length / pageSize));
-        currentPage = Math.min(Math.max(1, page), totalPages);
-        const start = (currentPage - 1) * pageSize;
-        const end = start + pageSize;
-
-        cards.forEach((card, i) => {
-          card.hidden = !(i >= start && i < end);
-        });
-
-        pagination.innerHTML = '';
-        if (totalPages <= 1) return;
-
-        const prev = document.createElement('button');
-        prev.type = 'button';
-        prev.className = 'game-page-btn';
-        prev.textContent = '‹';
-        prev.setAttribute('aria-label', '이전 게임 페이지');
-        prev.disabled = currentPage === 1;
-        prev.addEventListener('click', () => renderDesktopPage(currentPage - 1));
-        pagination.appendChild(prev);
-
-        for (let i = 1; i <= totalPages; i++) {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'game-page-btn';
-          btn.textContent = i;
-          if (i === currentPage) btn.setAttribute('aria-current', 'page');
-          btn.setAttribute('aria-label', `${i}번 게임 페이지`);
-          btn.addEventListener('click', () => renderDesktopPage(i));
-          pagination.appendChild(btn);
-        }
-
-        const next = document.createElement('button');
-        next.type = 'button';
-        next.className = 'game-page-btn';
-        next.textContent = '›';
-        next.setAttribute('aria-label', '다음 게임 페이지');
-        next.disabled = currentPage === totalPages;
-        next.addEventListener('click', () => renderDesktopPage(currentPage + 1));
-        pagination.appendChild(next);
-      }
-
-      function buildMobileDots() {
-        dots.innerHTML = '';
-        cards.forEach((_, i) => {
-          const dot = document.createElement('button');
-          dot.type = 'button';
-          dot.className = 'game-mobile-dot';
-          dot.setAttribute('aria-label', `${i + 1}번 게임 보기`);
-          if (i === mobileIndex) dot.setAttribute('aria-current', 'true');
-          dot.addEventListener('click', () => {
-            grid.scrollTo({ left: grid.clientWidth * i, behavior: 'smooth' });
-          });
-          dots.appendChild(dot);
-        });
-      }
-
-      function updateMobileDots() {
-        if (!isMobile()) return;
-        const width = grid.clientWidth || 1;
-        mobileIndex = Math.max(0, Math.min(cards.length - 1, Math.round(grid.scrollLeft / width)));
-        dots.querySelectorAll('.game-mobile-dot').forEach((dot, i) => {
-          if (i === mobileIndex) dot.setAttribute('aria-current', 'true');
-          else dot.removeAttribute('aria-current');
-        });
-      }
-
-      let scrollTimer;
-      grid.addEventListener('scroll', () => {
-        if (!isMobile()) return;
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(updateMobileDots, 60);
-      }, { passive: true });
-
-      function syncLayout() {
-        cards.forEach(card => card.hidden = false);
-        if (isMobile()) {
-          pagination.innerHTML = '';
-          buildMobileDots();
-          requestAnimationFrame(() => {
-            grid.scrollLeft = grid.clientWidth * mobileIndex;
-            updateMobileDots();
-          });
-        } else {
+        function buildDots() {
           dots.innerHTML = '';
-          grid.scrollLeft = 0;
-          renderDesktopPage(currentPage);
+          cards.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'game-mobile-dot';
+            dot.setAttribute('aria-label', `${i + 1}번 게임 보기`);
+            if (i === mobileIndex) dot.setAttribute('aria-current', 'true');
+            dot.addEventListener('click', () => {
+              grid.scrollTo({ left: grid.clientWidth * i, behavior: 'smooth' });
+            });
+            dots.appendChild(dot);
+          });
         }
-      }
 
-      window.addEventListener('resize', syncLayout);
-      syncLayout();
+        function updateDots() {
+          if (!isMobile()) return;
+          const width = grid.clientWidth || 1;
+          mobileIndex = Math.max(0, Math.min(cards.length - 1, Math.round(grid.scrollLeft / width)));
+          dots.querySelectorAll('.game-mobile-dot').forEach((dot, i) => {
+            if (i === mobileIndex) dot.setAttribute('aria-current', 'true');
+            else dot.removeAttribute('aria-current');
+          });
+        }
+
+        grid.addEventListener('scroll', () => {
+          if (!isMobile()) return;
+          clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(updateDots, 60);
+        }, { passive: true });
+
+        function syncGroup() {
+          cards.forEach(card => card.hidden = false);
+          if (isMobile()) {
+            buildDots();
+            requestAnimationFrame(() => {
+              grid.scrollLeft = grid.clientWidth * mobileIndex;
+              updateDots();
+            });
+          } else {
+            dots.innerHTML = '';
+            grid.scrollLeft = 0;
+          }
+        }
+
+        window.addEventListener('resize', syncGroup);
+        syncGroup();
+      });
     })();
 
   
