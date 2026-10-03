@@ -185,6 +185,8 @@
     .game-card h3 { position:relative; z-index:1; margin:16px 0 12px; font-family:"Noto Sans KR",sans-serif; font-size:clamp(1.2rem,1.7vw,1.7rem); line-height:1.15; letter-spacing:-.055em; }
     .game-card p { position:relative; z-index:1; margin:0; color:rgba(255,255,255,.8); font-family:"Noto Sans KR",sans-serif; font-size:.78rem; line-height:1.65; }
     .game-link { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; align-self:flex-start; min-height:44px; margin-top:auto; padding:0 18px; border:1px solid var(--acid); color:#111; background:var(--acid); text-decoration:none; font-size:.68rem; font-weight:800; letter-spacing:.08em; transition:transform .2s ease, background .2s ease; }
+    .game-more { display:flex; justify-content:center; margin-top:36px; padding-top:28px; border-top:1px solid rgba(255,255,255,.18); }
+    .game-more .game-link { margin-top:0; min-height:48px; padding:0 28px; font-family:"Noto Sans KR",sans-serif; font-size:.82rem; letter-spacing:0; }
     .game-link:hover { transform:translateY(-2px); background:#e8ff76; }
 
     .game-pagination { display:flex; justify-content:center; align-items:center; gap:7px; margin-top:28px; }
@@ -565,6 +567,17 @@
                   <a class="game-link" href="https://nyamplay.pages.dev/busan-mission/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
                 </div>
               </article>
+              <article class="game-card">
+                <a class="game-thumb" href="https://nyamplay.pages.dev/mokho-mission/" target="_blank" rel="noreferrer" aria-label="코코나나 묵호 미션 게임 열기">
+                  <img src="images/og-mukho-mission.png" alt="코코나나 묵호 미션 게임 썸네일" loading="lazy">
+                </a>
+                <div class="game-card-body">
+                  <p class="eyebrow">ONLINE ESCAPE GAME</p>
+                  <h3>코코나나 묵호 미션</h3>
+                  <p>코코와 나나가 묵호의 다양한 명소를 여행하며<br class="mobile-break"><span class="pc-break"></span> 숨은 단서를 찾고 미션을 해결하는 온라인 방탈출 게임입니다.</p>
+                  <a class="game-link" href="https://nyamplay.pages.dev/mokho-mission/" target="_blank" rel="noreferrer">PLAY THE GAME ↗</a>
+                </div>
+              </article>
             </div>
             <div class="game-slider-controls">
               <div class="game-mobile-dots" id="game-mobile-dots-travel" aria-label="World Travel 게임 슬라이드 선택"></div>
@@ -573,6 +586,9 @@
                 <button class="game-slider-arrow game-slider-next" type="button" aria-label="다음 게임 페이지">›</button>
               </div>
             </div>
+          </div>
+          <div class="game-more">
+            <a class="game-link" href="https://nyamplay.pages.dev/" target="_blank" rel="noreferrer">게임 더보기 ↗</a>
           </div>
         </div>
 </div>
